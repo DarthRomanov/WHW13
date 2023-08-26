@@ -1,0 +1,34 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'noteapp:quote' %}">
+    {% csrf_token %}
+    <div style="padding: 10px">
+        <label> Quote name:
+            {{ form.name }}
+        </label>
+        <span>{{ form.errors.name }}</span>
+    </div>
+    <div style="padding: 10px">
+        <label> Quote description:
+            {{ form.description }}
+        </label>
+        <span>{{ form.errors.description }}</span>
+    </div>
+    <div style="padding: 10px">
+        <label> Select author:
+            <select name="author" multiple="multiple" required>
+                {% for author in authors %}
+                <option value="{{author.name}}">{{author.name}}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+    <div class="grid">
+        <button type="submit">Submit</button>
+        <button type="reset" class="secondary">Reset</button>
+    </div>
+</form>
+{% endblock %}
+

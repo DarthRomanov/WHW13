@@ -1,0 +1,12 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+<h2>{{note.name}}</h2>
+<h3>{{note.description}}</h3>
+<h4>{{note.done}}</h4>
+<h5>{{note.created}}</h5>
+{% for tag in note.tags.all%}
+<h6>{{tag.name}}</h6>
+{% endfor %}
+
+{% endblock %}
